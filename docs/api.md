@@ -1,6 +1,6 @@
 # Cliente Feliz API - Documentation
 
-Esta documentación describe los endpoints disponibles en la API RESTful de Cliente Feliz, una plataforma de gestión de selección de personal.
+This documentation describes the available endpoints in the Cliente Feliz RESTful API, a personnel selection management platform.
 
 ## Base URL
 
@@ -10,7 +10,7 @@ http://localhost:8080/api/v1
 
 ## API Versions
 
-La API utiliza versionamiento en la URL. La versión actual es `v1`.
+The API uses URL versioning. The current version is `v1`.
 
 ```
 http://localhost:8080/api/v1
@@ -24,7 +24,7 @@ http://localhost:8080/api/v1
 GET /api
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -47,7 +47,7 @@ GET /api
 
 ## Authentication
 
-La API utiliza autenticación JWT (JSON Web Token). Los tokens se obtienen a través del endpoint de login y deben incluirse en el encabezado `Authorization` para las peticiones a endpoints protegidos.
+The API uses JWT (JSON Web Token) authentication. Tokens are obtained through the login endpoint and must be included in the `Authorization` header for requests to protected endpoints.
 
 ### Authentication Endpoints
 
@@ -57,7 +57,7 @@ La API utiliza autenticación JWT (JSON Web Token). Los tokens se obtienen a tra
 POST /api/v1/auth/login
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -66,7 +66,7 @@ POST /api/v1/auth/login
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -90,7 +90,7 @@ POST /api/v1/auth/login
 POST /api/v1/auth/register
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -105,7 +105,7 @@ POST /api/v1/auth/register
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -129,13 +129,13 @@ POST /api/v1/auth/register
 GET /api/v1/auth/user
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -156,13 +156,13 @@ Authorization: eyJhbGciOiJIUzI1...
 POST /api/v1/auth/logout
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -184,7 +184,7 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/job-offers
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -215,7 +215,7 @@ GET /api/v1/job-offers
 GET /api/v1/job-offers/{id}
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -245,13 +245,13 @@ GET /api/v1/job-offers/{id}
 POST /api/v1/job-offers
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -264,7 +264,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -290,13 +290,13 @@ Authorization: eyJhbGciOiJIUzI1...
 PUT /api/v1/job-offers/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -306,7 +306,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -332,13 +332,13 @@ Authorization: eyJhbGciOiJIUzI1...
 PATCH /api/v1/job-offers/{id}/deactivate
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -354,13 +354,13 @@ Authorization: eyJhbGciOiJIUzI1...
 DELETE /api/v1/job-offers/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -376,13 +376,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/job-offers/my-offers
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -414,13 +414,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/job-offers/{id}/applicants
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -456,13 +456,13 @@ Authorization: eyJhbGciOiJIUzI1...
 POST /api/v1/applications
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -470,7 +470,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -493,13 +493,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/applications/my-applications
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -532,13 +532,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/applications/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -563,13 +563,13 @@ Authorization: eyJhbGciOiJIUzI1...
 PUT /api/v1/applications/{id}/status
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -578,7 +578,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -605,13 +605,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/profile/work-experience
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -637,13 +637,13 @@ Authorization: eyJhbGciOiJIUzI1...
 POST /api/v1/profile/work-experience
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -655,7 +655,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -678,13 +678,13 @@ Authorization: eyJhbGciOiJIUzI1...
 PUT /api/v1/profile/work-experience/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -696,7 +696,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -719,13 +719,13 @@ Authorization: eyJhbGciOiJIUzI1...
 DELETE /api/v1/profile/work-experience/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -743,13 +743,13 @@ Authorization: eyJhbGciOiJIUzI1...
 GET /api/v1/profile/academic-background
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -775,13 +775,13 @@ Authorization: eyJhbGciOiJIUzI1...
 POST /api/v1/profile/academic-background
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -793,7 +793,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -816,13 +816,13 @@ Authorization: eyJhbGciOiJIUzI1...
 PUT /api/v1/profile/academic-background/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Parámetros de solicitud:**
+**Request Parameters:**
 
 ```json
 {
@@ -834,7 +834,7 @@ Authorization: eyJhbGciOiJIUzI1...
 }
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -857,13 +857,13 @@ Authorization: eyJhbGciOiJIUzI1...
 DELETE /api/v1/profile/academic-background/{id}
 ```
 
-**Encabezado requerido:**
+**Required Header:**
 
 ```
 Authorization: eyJhbGciOiJIUzI1...
 ```
 
-**Respuesta exitosa:**
+**Successful Response:**
 
 ```json
 {
@@ -875,14 +875,14 @@ Authorization: eyJhbGciOiJIUzI1...
 
 ## HTTP Response Codes
 
-- **200 OK**: Solicitud exitosa
-- **201 Created**: Recurso creado exitosamente
-- **400 Bad Request**: Solicitud inválida
-- **401 Unauthorized**: Autenticación fallida o token inválido
-- **403 Forbidden**: No tiene permisos para acceder al recurso
-- **404 Not Found**: Recurso no encontrado
-- **422 Unprocessable Entity**: Error de validación
-- **500 Internal Server Error**: Error del servidor
+- **200 OK**: Successful request
+- **201 Created**: Resource successfully created
+- **400 Bad Request**: Invalid request
+- **401 Unauthorized**: Authentication failed or invalid token
+- **403 Forbidden**: No permission to access the resource
+- **404 Not Found**: Resource not found
+- **422 Unprocessable Entity**: Validation error
+- **500 Internal Server Error**: Server error
 
 ## Rate Limiting
 - 100 requests per minute per IP
