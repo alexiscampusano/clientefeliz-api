@@ -1,0 +1,42 @@
+# Archivos y carpetas del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de ambiente y configuración local
+.env
+.env.local
+.env.*.local
+
+# Archivos temporales
+*.tmp
+*.swp
+*.swo
+*~
+
+# Carpetas de dependencias
+/vendor
+/node_modules
+
+# Logs
+/logs
+*.log
+npm-debug.log*
+
+# Docker
+.docker/data
+docker-compose.override.yml
+
+# IDEs y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.phpintel/
+*.phptidybak
+*.phptidyrc
+
+# Archivos de caché
+.phpunit.result.cache
+.php_cs.cache
+.php-cs-fixer.cache 

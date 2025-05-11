@@ -1,0 +1,851 @@
+{
+  "info": {
+    "_postman_id": "a77bc9f5-64f0-4a8b-b44e-7d3e94f19b2a",
+    "name": "Cliente Feliz API",
+    "description": "API para el sistema de selección de personal de la empresa Cliente Feliz",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API Info",
+      "item": [
+        {
+          "name": "API Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api"
+              ]
+            },
+            "description": "Get detailed information about the API (endpoints, version, etc.)"
+          },
+          "response": []
+        }
+      ],
+      "description": "API documentation and information"
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"candidate@example.com\",\n    \"password\": \"Password123\",\n    \"name\": \"John Doe\",\n    \"role\": \"candidate\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "Register a new user"
+          },
+          "response": []
+        },
+        {
+          "name": "Login (Candidate)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"pedro@ejemplo.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login as a candidate"
+          },
+          "response": []
+        },
+        {
+          "name": "Login (Recruiter)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"reclutador@clientefeliz.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login as a recruiter"
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "logout"
+              ]
+            },
+            "description": "Logout (invalidate current token)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/user",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "user"
+              ]
+            },
+            "description": "Get current user information"
+          },
+          "response": []
+        }
+      ],
+      "description": "Authentication endpoints"
+    },
+    {
+      "name": "Candidate",
+      "item": [
+        {
+          "name": "Job Offers",
+          "item": [
+            {
+              "name": "Get Active Job Offers",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers"
+                  ]
+                },
+                "description": "Get all active job offers"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Job Offer By ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "1"
+                  ]
+                },
+                "description": "Get a job offer by ID"
+              },
+              "response": []
+            }
+          ],
+          "description": "Job offers lookup (candidates)"
+        },
+        {
+          "name": "Applications",
+          "item": [
+            {
+              "name": "Apply for Job",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"job_offer_id\": 1,\n    \"cover_letter\": \"I am very interested in this position and believe my skills make me a great fit...\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/applications",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "applications"
+                  ]
+                },
+                "description": "Apply for a job offer"
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Applications",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/applications/my-applications",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "applications",
+                    "my-applications"
+                  ]
+                },
+                "description": "Get all applications for the current user"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Application Details",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/applications/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "applications",
+                    "1"
+                  ]
+                },
+                "description": "Get application details by ID"
+              },
+              "response": []
+            }
+          ],
+          "description": "Applications management (candidates)"
+        },
+        {
+          "name": "Profile",
+          "item": [
+            {
+              "name": "Work Experience",
+              "item": [
+                {
+                  "name": "Get Work Experience",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/work-experience",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "work-experience"
+                      ]
+                    },
+                    "description": "Get user's work experience"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Add Work Experience",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"company\": \"ABC Corp\",\n    \"position\": \"Software Developer\",\n    \"start_date\": \"2020-01-01\",\n    \"end_date\": \"2022-01-01\",\n    \"duties\": \"Worked on various web applications\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/work-experience",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "work-experience"
+                      ]
+                    },
+                    "description": "Add work experience to user profile (candidate_id, company, position, start_date, end_date, duties)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Work Experience",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"position\": \"Senior Software Developer\",\n    \"duties\": \"Worked on various web and mobile applications\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/work-experience/1",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "work-experience",
+                        "1"
+                      ]
+                    },
+                    "description": "Update work experience"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Work Experience",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/work-experience/1",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "work-experience",
+                        "1"
+                      ]
+                    },
+                    "description": "Delete work experience"
+                  },
+                  "response": []
+                }
+              ],
+              "description": "User work experience management"
+            },
+            {
+              "name": "Academic Background",
+              "item": [
+                {
+                  "name": "Get Academic Background",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/academic-background",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "academic-background"
+                      ]
+                    },
+                    "description": "Get user's academic background"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Add Academic Background",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"institution\": \"University of Example\",\n    \"degree\": \"Bachelor of Computer Science\",\n    \"start_year\": \"2016\",\n    \"end_year\": \"2020\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/academic-background",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "academic-background"
+                      ]
+                    },
+                    "description": "Add academic background to user profile (candidate_id, institution, degree, start_year, end_year)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Academic Background",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"degree\": \"Bachelor of Computer Science with AI specialization\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/academic-background/1",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "academic-background",
+                        "1"
+                      ]
+                    },
+                    "description": "Update academic background"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Academic Background",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/api/v1/profile/academic-background/1",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "profile",
+                        "academic-background",
+                        "1"
+                      ]
+                    },
+                    "description": "Delete academic background"
+                  },
+                  "response": []
+                }
+              ],
+              "description": "User academic background management"
+            }
+          ],
+          "description": "User profile management (candidates)"
+        }
+      ],
+      "description": "Endpoints for candidates"
+    },
+    {
+      "name": "Recruiter",
+      "item": [
+        {
+          "name": "Job Offers",
+          "item": [
+            {
+              "name": "Create Job Offer",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"Desarrollador Full Stack\",\n    \"description\": \"Buscamos desarrollador con experiencia en PHP, JavaScript y React\",\n    \"location\": \"Santiago\",\n    \"salary\": 1500000,\n    \"contract_type\": \"Indefinite\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers"
+                  ]
+                },
+                "description": "Crea una nueva oferta de trabajo. Solo disponible para usuarios con rol de reclutador.\n\nCampos requeridos:\n- title: Título de la oferta de trabajo\n- description: Descripción detallada de la oferta\n- location: Ubicación del trabajo\n- salary: Salario mensual en pesos chilenos (número sin formato)\n- contract_type: Tipo de contrato (ej: Indefinite, Temporary, Part-time)"
+              },
+              "response": []
+            },
+            {
+              "name": "Update Job Offer",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\": \"Desarrollador Full Stack Senior\",\n    \"salary\": 2000000\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "1"
+                  ]
+                },
+                "description": "Actualiza una oferta de trabajo existente. Solo disponible para el reclutador que creó la oferta.\n\nCampos actualizables:\n- title: Título de la oferta de trabajo\n- description: Descripción detallada de la oferta\n- location: Ubicación del trabajo\n- salary: Salario mensual en pesos chilenos\n- contract_type: Tipo de contrato\n- status: Estado de la oferta (Active, Inactive)\n- closing_date: Fecha de cierre (formato YYYY-MM-DD)"
+              },
+              "response": []
+            },
+
+            {
+              "name": "Get My Job Offers",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/my-offers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "my-offers"
+                  ]
+                },
+                "description": "Obtiene todas las ofertas de trabajo creadas por el reclutador autenticado, incluyendo tanto las ofertas activas como las inactivas."
+              },
+              "response": []
+            },
+            {
+              "name": "Deactivate Job Offer",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/{{job_offer_id}}/deactivate",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "{{job_offer_id}}",
+                    "deactivate"
+                  ]
+                },
+                "description": "Marca una oferta de trabajo como inactiva (sin eliminarla de la base de datos). Requiere permisos de reclutador y ser el creador de la oferta.",
+                "response": []
+              }
+            },
+            {
+              "name": "Permanently Delete Job Offer",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/{{job_offer_id}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "{{job_offer_id}}"
+                  ]
+                },
+                "description": "Elimina permanentemente una oferta de trabajo de la base de datos. Requiere permisos de reclutador y ser el creador de la oferta.",
+                "response": []
+              }
+            }
+          ],
+          "description": "Gestión de ofertas de trabajo (sólo reclutadores)"
+        },
+        {
+          "name": "Applications",
+          "item": [
+            {
+              "name": "Get Applicants for Job Offer",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/job-offers/1/applicants",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "job-offers",
+                    "1",
+                    "applicants"
+                  ]
+                },
+                "description": "Obtiene todos los candidatos que han aplicado a una oferta de trabajo específica. El parámetro '1' en la URL debe ser reemplazado por el ID de la oferta que se desea consultar. Solo disponible para el reclutador que creó la oferta."
+              },
+              "response": []
+            },
+            {
+              "name": "Update Application Status",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\": \"Reviewing\",\n    \"feedback\": \"Su aplicación está siendo revisada por nuestro equipo.\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/applications/1/status",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "applications",
+                    "1",
+                    "status"
+                  ]
+                },
+                "description": "Actualiza el estado de una aplicación. El parámetro '1' en la URL debe ser reemplazado por el ID de la aplicación que se desea actualizar. Solo disponible para el reclutador que publicó la oferta.\n\nCampos requeridos:\n- status: Nuevo estado de la aplicación (valores permitidos: Applied, Reviewing, Psychological Interview, Personal Interview, Selected, Rejected)\n- feedback: Comentario opcional para el candidato"
+              },
+              "response": []
+            }
+          ],
+          "description": "Gestión de aplicaciones (sólo reclutadores)"
+        }
+      ],
+      "description": "Endpoints para reclutadores"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+} 

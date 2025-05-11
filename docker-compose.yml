@@ -1,0 +1,63 @@
+
+services:
+  # Servicio de PHP para la API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clientefeliz-api
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - clientefeliz-network
+    environment:
+      - DB_HOST=db
+      - DB_NAME=cliente_feliz
+      - DB_USER=cliente_feliz_user
+      - DB_PASSWORD=cliente_feliz_password
+
+  # Servicio de base de datos
+  db:
+    image: mysql:8.0
+    container_name: clientefeliz-db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./database/create_tables.sql:/docker-entrypoint-initdb.d/01-create_tables.sql
+      - ./database/seed_data.sql:/docker-entrypoint-initdb.d/02-seed_data.sql
+    networks:
+      - clientefeliz-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=cliente_feliz
+      - MYSQL_USER=cliente_feliz_user
+      - MYSQL_PASSWORD=cliente_feliz_password
+
+  # Servicio de phpMyAdmin (opcional para administrar la base de datos)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: clientefeliz-phpmyadmin
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - clientefeliz-network
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - MYSQL_ROOT_PASSWORD=root_password
+
+networks:
+  clientefeliz-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local 
